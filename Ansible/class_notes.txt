@@ -1362,7 +1362,7 @@ Day - 4 3rd Dec. 2023
 							- used to push and access the remote repos from local machine 
 							
 							
-		
+
 			
 			New Project :::
 			
@@ -1436,7 +1436,7 @@ Working With Jenkins :::
 				
 			
 			- Installation & Configuration of Jenkins Servers 
-			- Plugin Management 
+			- Plugins Management 
 			- User Management 
 			- Tools Management
 			- Access/Security Management
@@ -1492,8 +1492,6 @@ Default Directory :: /var/lib/jenkins
 										Build Executer --> Used to execute the jobs in the Node.
 															1 - only one job 
 															2 - run 2 jobs in parallel.
-
-
 
 #######################
 Day - 5 9th Dec. 2023 
@@ -1813,7 +1811,8 @@ Deployment ??
 			target/mvn-hello-world.war									==>					/opt/tomcat/webapps/mvn-hello-world.war	
 
 
-
+	
+		
 pipeline {
     agent { label 'slave1' }
 
@@ -1839,8 +1838,7 @@ pipeline {
             }
         }
     }
-}
-
+}			
 
 Automate the Builds and Deployments ::::
 
@@ -1859,7 +1857,9 @@ Next ::
 			Email Notifications 
 			
 			Ansible Module 
-
+			Terraform 
+			
+			
 #######################
 Day - 6 10th Dec. 2023 
 #######################
@@ -1916,7 +1916,7 @@ Automate the Builds and Deployments ::::
 							create App Password
 								16 Bytes of token will be generated
 
-							
+					
 			
 Email Notification Plugins :::
 
@@ -2028,3 +2028,127 @@ pipeline {
 }	
 
 
+
+
+Configuration Management Tool - Ansible.		
+
+
+		Infra-Structure Management Team 
+		
+				- Provision the Infra-Structure 		--> Terraform/Cloudformation/ARM  
+							Creating the required servers/Environments 
+				
+				- Configure the Infra-Structure			--> Ansible/Chef/Puppet 
+							Installing/Managing all the required tools/package/services in the Infra-Structure
+							
+							
+			Jenkins_master 
+			
+				Jenkins_Slave_Node1 ==> Dev_Team1 - Java Web Application. --> 1 to 100 Nodes 
+											git,jdk,maven...
+											
+											
+			Ansible is one of the IAC Tools --> Infra-Structure As Code.
+			
+				Install security patches in all the servers once in 15 days.
+				
+				
+			1. Ansible Architecture
+					Ansible uses Push Mechanism to perform any task in target node.
+			2. Ansible Components 
+					Inventory 
+					Modules 
+					ansible.config 
+					Ansible Playbook/Adhoc Commands 
+					
+			Working with Ansible ::
+			
+				- Install Ansible
+						python.
+						
+			Using Ansible we are gng to handle the ansible nodes. 
+				1. Create Inventory 
+				
+				Ansible Adhoc Commands 
+					- used to execute specific command/task 
+					
+						apt install git -y 
+					
+				Ansible Playbooks 				
+					- used to execute some series of commands/tasks  
+					
+						apt install jdk 
+						apt maven -y 
+						
+				Ansible Modules :		
+						- are the predefined scripts used to perform some task.
+
+			
+#######################
+Day - 7 16th Dec. 2023 
+#######################
+
+	Next :
+		Ansible Playbooks 
+		Handling Variables
+		Register 
+		Handlers 
+		Ansible Roles 
+		
+		Terraform 
+		
+		Docker & Kubernetes 
+		
+		Prometheus/Grafana
+		
+		Demo on CI/CD Pipeline 
+		
+
+
+		Ansible Playbooks 
+		Handling Variables
+		Register 
+		Handlers 
+		Ansible Roles 
+		
+			Ansible Adhoc --> Just to execute a specific Task / Module 
+			Ansible Playbooks  --> Playbooks are written using yaml script - used to execute the series of ansible tasks/Modules.
+			Playbook should be reusable!
+			
+			
+		Variables :
+		
+			Pre-Defined Variables
+			User-Defined Variables 
+			
+		
+		Tomcat ::
+		
+		Install Tomcat in a node!
+		
+			- Install JDK 
+			- Install Tomcat 
+			- Start Tomcat
+			
+		Handlers :: are used to control the dlow of execution of tasks
+		
+			- Install JDK 
+				notify install tomcat 
+			- Install Tomcat 
+				notify start tomcat 
+			- Start Tomcat	
+
+		Ansible Roles 
+		
+Summary :
+
+		Install & Setup the Ansible Controller and Target Nodes
+		Modules 
+		Inventory files
+		Adhoc Commands 
+		Playbook Variables Handling 
+		Roles 
+			handlers 
+			vars 
+			tasks 
+			
